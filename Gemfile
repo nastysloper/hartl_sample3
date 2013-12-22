@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '2.0.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
+  gem 'annotate', '>=2.4.1'
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
   gem 'growl', '1.0.3'
