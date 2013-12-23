@@ -12,7 +12,11 @@
 #  Hartl tutorial page 229
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :password, :password_confirmation
+
+  # This one method, along with password digest column in the database
+  # allows Rails to securely create and authenticate new users.
+  has_secure_password
 
   # database adapters do not use case-insensitive indices. Hartl, page 253.
   before_save { |user| user.email = email.downcase }
@@ -21,5 +25,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
 
 end
