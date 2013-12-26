@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   def index
-    # puts "Entering the index action in UsersController."
   end
   def new
-    # puts "Entering the new action in UsersController."
-  end
-  def signup
+    @user = User.new
   end
   def show
     @user = User.find(params[:id])
+  end
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      # handle successful save
+    else
+      render 'new'
+    end
   end
 end
