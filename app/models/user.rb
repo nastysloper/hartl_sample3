@@ -14,6 +14,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_many :microposts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   # This one method, along with password digest column in the database
   # allows Rails to securely create and authenticate new users.
