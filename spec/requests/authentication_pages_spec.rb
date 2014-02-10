@@ -94,7 +94,6 @@ describe "Authentication" do
       end
 
       describe "in the Microposts controller" do
-
         describe "submitting to the create action" do
           before { post microposts_path }
           specify { response.should redirect_to(signin_path) }
@@ -110,7 +109,6 @@ describe "Authentication" do
       end
 
       describe "in the Users controller" do
-
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
           it { should have_selector('title', text: 'Sign in') }
